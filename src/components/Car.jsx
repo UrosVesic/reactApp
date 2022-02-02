@@ -4,6 +4,10 @@ function formatiraj(car){
     return "Cubic capacity: "+car.cc + " " +"Horse powers: "+ car.hp;
 }
 
+var today = new Date(),
+            date = today.getFullYear() + '-0' + (today.getMonth() + 1) + '-0' + today.getDate();
+            console.log(date);
+
 const Car = ({car}) => {
     return (
         <div className="card">
@@ -14,6 +18,8 @@ const Car = ({car}) => {
               {formatiraj(car)}
             </p>
             <a className="btn">Rent</a>
+            <input type="date" id="start" name="rent-start"
+                    min={date}></input>
           </div>
         </div>
     
