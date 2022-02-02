@@ -8,6 +8,7 @@ function NavBar() {
             <a className ="rent-items">
             <AiFillCar style={{ marginLeft: 10 }} />
             </a>
+            <div className="rent-num">0</div>
         </div>
     );
 }
