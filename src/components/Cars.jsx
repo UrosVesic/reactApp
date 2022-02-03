@@ -10,6 +10,7 @@ const Cars = ({cars, onAdd, onUndo}) => {
         car = {car}
         onAdd = {onAdd}
         onUndo = {onUndo}
+        rented = {0}
         />
       ))}
 

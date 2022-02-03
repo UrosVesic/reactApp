@@ -13,6 +13,7 @@ import l from "./slike/500l.jpg";
 import pg from "./slike/206.jpg";
 
 function App() {
+  const [rents, setRents] = useState([]);
   const [rentNum, setRentNum] = useState(0);
   const [rentPrice, setRentPrice] = useState(0);
   const [cars, setCars] = useState([
@@ -87,12 +88,18 @@ function App() {
       priceperday: 200,
     },
   ]);
+  const refreshRents = () => {
+    const newRents = cars.filter((car) => car.amount > 0);
+    setRents(newRents);
+  };
+
   const addToRents = (id) => {
     cars.map((car) => {
       if (car.id === id) {
         car.amount++;
         const a = rentNum + 1;
         setRentNum(a);
+        refreshRents();
         const b = rentPrice + car.priceperday;
         setRentPrice(b);
         console.log(
@@ -113,10 +120,11 @@ function App() {
           car.amount--;
           const a = rentNum - 1;
           setRentNum(a);
+          refreshRents();
           const b = rentPrice - car.priceperday;
           setRentPrice(b);
         } else {
-          alert("You have not rented ", car.brand);
+          alert("You have not rented this car");
         }
         console.log(
           "car=",
@@ -138,7 +146,7 @@ function App() {
           path="/"
           element={<Cars cars={cars} onAdd={addToRents} onUndo={undoRent} />}
         />
-        <Route path="/rents" element={<Rents />} />
+        <Route path="/rent" element={<Rents rents={rents} />} />
       </Routes>
     </BrowserRouter>
   );

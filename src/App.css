@@ -84,11 +84,11 @@ a {
   cursor: pointer;
 }
 
-.cart-container {
+.rent-container {
   margin: 20px;
 }
 
-.card-cart {
+.card-rents {
   display: flex;
   flex-direction: row;
   border-style: solid;
