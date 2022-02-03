@@ -1,7 +1,7 @@
 import React from 'react';
 
 function formatiraj(car){
-    return "Cubic capacity: "+car.cc + " " +"Horse powers: "+ car.hp;
+    return "Cubic capacity: "+car.cc +  + "Horse powers: "+ car.hp;
 }
 
 var today = new Date(),
@@ -12,20 +12,24 @@ console.log(date);
 
 
 
-const Car = ({car,onAdd,onUndo}) => {
+const Car = ({car,onAdd,onUndo,rented}) => {
    
     return (
-        <div className="card">
-          <img className="card-img-top" src={car.imageLink} alt="Neka slika"/>
+        <div className={rented === 0 ?"card":"card-rents"}>
+          <img className="card-img-top" src={car.imageLink} alt="slika"/>
           <div className="card-body">
             <h3 className="card-title">{car.brand} {car.model}</h3>
             <p className="card-text">
-              {formatiraj(car)}
+            Cubic capacity: {car.cc} 
+            <br/>
+            Horse powers:  {car.hp}
             </p>
+            {rented===0 ? <>
             <a className="btn" onClick={()=> onAdd(car.id)}>Rent</a>
             <a className="btn" onClick={()=> onUndo(car.id)}>Undo</a>
             <input type="date" id="start" name="rent-start"
-                    min={date}></input>
+                    min={date}></input></> : <h3>Amount:{car.amount} <br/> Price:{car.amount*car.priceperday}</h3>}
+            
           </div>
         </div>
     
