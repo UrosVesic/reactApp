@@ -30,6 +30,18 @@
   margin-left: 5px;
 }
 
+.rent-price {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 5px;
+}
+
 .all-cars {
   display: flex;
   margin: 20px;

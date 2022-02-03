@@ -1,6 +1,7 @@
 import "./App.css";
 import NavBar from "./components/NavBar.jsx";
 import Cars from "./components/Cars.jsx";
+import { useState } from "react";
 import bmwx6 from "./slike/bmwx6.jpg";
 import audia4 from "./slike/audia4.jpg";
 import punto from "./slike/punto.jpg";
@@ -9,7 +10,9 @@ import l from "./slike/500l.jpg";
 import pg from "./slike/206.jpg";
 
 function App() {
-  const cars = [
+  const [rentNum, setRentNum] = useState(0);
+  const [rentPrice, setRentPrice] = useState(0);
+  const [cars, setCars] = useState([
     {
       id: 1,
       brand: "BMW",
@@ -18,6 +21,7 @@ function App() {
       hp: 300,
       imageLink: bmwx6,
       amount: 0,
+      priceperday: 1000,
     },
     {
       id: 2,
@@ -27,6 +31,7 @@ function App() {
       hp: 300,
       imageLink: audia4,
       amount: 0,
+      priceperday: 1000,
     },
     {
       id: 3,
@@ -36,6 +41,7 @@ function App() {
       hp: 90,
       imageLink: punto,
       amount: 0,
+      priceperday: 200,
     },
     {
       id: 4,
@@ -45,6 +51,7 @@ function App() {
       hp: 105,
       imageLink: stilo,
       amount: 0,
+      priceperday: 200,
     },
     {
       id: 5,
@@ -54,6 +61,7 @@ function App() {
       hp: 105,
       imageLink: l,
       amount: 0,
+      priceperday: 300,
     },
     {
       id: 6,
@@ -63,6 +71,7 @@ function App() {
       hp: 105,
       imageLink: pg,
       amount: 0,
+      priceperday: 150,
     },
     {
       id: 7,
@@ -72,13 +81,56 @@ function App() {
       hp: 105,
       imageLink: "",
       amount: 0,
+      priceperday: 200,
     },
-  ];
+  ]);
+  const addToRents = (id) => {
+    cars.map((car) => {
+      if (car.id === id) {
+        car.amount++;
+        const a = rentNum + 1;
+        setRentNum(a);
+        const b = rentPrice + car.priceperday;
+        setRentPrice(b);
+        console.log(
+          "car=",
+          car.brand,
+          "amount=",
+          car.amount,
+          "total price= ",
+          car.amount * car.priceperday
+        );
+      }
+    });
+  };
+  const undoRent = (id) => {
+    cars.map((car) => {
+      if (car.id === id) {
+        if (car.amount > 0) {
+          car.amount--;
+          const a = rentNum - 1;
+          setRentNum(a);
+          const b = rentPrice - car.priceperday;
+          setRentPrice(b);
+        } else {
+          alert("You have not rented ", car.brand);
+        }
+        console.log(
+          "car=",
+          car.brand,
+          "amount=",
+          car.amount,
+          "total price= ",
+          car.amount * car.priceperday
+        );
+      }
+    });
+  };
 
   return (
     <div className="App">
-      <NavBar />
-      <Cars cars={cars} />
+      <NavBar rentNum={rentNum} rentPrice={rentPrice} />
+      <Cars cars={cars} onAdd={addToRents} onUndo={undoRent} />
     </div>
   );
 }
