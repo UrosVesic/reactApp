@@ -1,7 +1,10 @@
 import "./App.css";
 import NavBar from "./components/NavBar.jsx";
 import Cars from "./components/Cars.jsx";
+import Rents from "./components/Rents.jsx";
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import bmwx6 from "./slike/bmwx6.jpg";
 import audia4 from "./slike/audia4.jpg";
 import punto from "./slike/punto.jpg";
@@ -128,10 +131,16 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <BrowserRouter>
       <NavBar rentNum={rentNum} rentPrice={rentPrice} />
-      <Cars cars={cars} onAdd={addToRents} onUndo={undoRent} />
-    </div>
+      <Routes>
+        <Route
+          path="/"
+          element={<Cars cars={cars} onAdd={addToRents} onUndo={undoRent} />}
+        />
+        <Route path="/rents" element={<Rents />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
