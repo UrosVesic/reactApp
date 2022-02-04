@@ -11,6 +11,8 @@ import punto from "./slike/punto.jpg";
 import stilo from "./slike/stilo.jpg";
 import l from "./slike/500l.jpg";
 import pg from "./slike/206.jpg";
+import clio from "./slike/clio.jpg";
+import Checkout from "./components/Checkout.jsx";
 
 function App() {
   const [rents, setRents] = useState([]);
@@ -83,7 +85,7 @@ function App() {
       model: "Clio",
       cc: 1400,
       hp: 105,
-      imageLink: "",
+      imageLink: clio,
       amount: 0,
       priceperday: 200,
     },
@@ -146,6 +148,7 @@ function App() {
           path="/"
           element={<Cars cars={cars} onAdd={addToRents} onUndo={undoRent} />}
         />
+        <Route path="/checkout" element={<Checkout rents={rents} />} />
         <Route path="/rent" element={<Rents rents={rents} />} />
       </Routes>
     </BrowserRouter>

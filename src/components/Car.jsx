@@ -11,9 +11,8 @@ console.log(date);
 
 
 
-
 const Car = ({car,onAdd,onUndo,rented}) => {
-   
+  
     return (
         <div className={rented === 0 ?"card":"card-rents"}>
           <img className="card-img-top" src={car.imageLink} alt="slika"/>
@@ -27,8 +26,8 @@ const Car = ({car,onAdd,onUndo,rented}) => {
             {rented===0 ? <>
             <a className="btn" onClick={()=> onAdd(car.id)}>Rent</a>
             <a className="btn" onClick={()=> onUndo(car.id)}>Undo</a>
-            <input type="date" id="start" name="rent-start"
-                    min={date}></input></> : <h3>Amount:{car.amount} <br/> Price:{car.amount*car.priceperday}</h3>}
+           </> : <> <input type="date" id={vratiDateId(car)} name="rent-start"
+                    min={date}></input><h3>Amount:{car.amount} <br/> Price:{car.amount*car.priceperday}</h3></>}
             
           </div>
         </div>
