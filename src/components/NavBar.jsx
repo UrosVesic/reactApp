@@ -11,10 +11,11 @@ function NavBar({rentNum,rentPrice}) {
             <AiFillCar style={{ marginLeft: 10 }} />
             </Link>
             <div className="rent-num">{rentNum}</div>
-            <a   className ="rent-items" id="rents">
+            <div   className ="rent-items" id="rents">
             <FaMoneyBillAlt style={{ marginLeft: 10 }} />
-            </a>
+            </div>
             <div className="rent-price" id ="price">{rentPrice}</div>
+            <Link to='/checkout' style={{ marginLeft: 20 }}> Checkout</Link>
         </div>
     );
 }
