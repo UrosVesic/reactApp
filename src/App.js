@@ -140,6 +140,12 @@ function App() {
     });
   };
 
+  function removeAllRents() {
+    setRents([]);
+    setRentNum(0);
+    setRentPrice(0);
+  }
+
   return (
     <BrowserRouter>
       <NavBar rentNum={rentNum} rentPrice={rentPrice} />
@@ -149,7 +155,10 @@ function App() {
           element={<Cars cars={cars} onAdd={addToRents} onUndo={undoRent} />}
         />
         <Route path="/checkout" element={<Checkout rents={rents} />} />
-        <Route path="/rent" element={<Rents rents={rents} />} />
+        <Route
+          path="/rent"
+          element={<Rents rents={rents} removeAllRents={removeAllRents} />}
+        />
       </Routes>
     </BrowserRouter>
   );

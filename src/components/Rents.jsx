@@ -1,7 +1,7 @@
 import React from 'react';
 import Car from "./Car.jsx";
 
-const Rents = ({rents}) => {
+const Rents = ({rents, removeAllRents}) => {
   return (<div className="rent-container">
       <h1>Your rents</h1>
       {rents.map((car) => (
@@ -12,9 +12,10 @@ const Rents = ({rents}) => {
          //onAdd = {onAdd}
          //onUndo = {onUndo}
          />
+         
       ))}
       
-
+      <button onClick={(e)=>{e.preventDefault();removeAllRents()}}>Remove all rents</button>
     </div>);
 };
 

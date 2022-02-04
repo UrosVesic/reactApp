@@ -26,7 +26,7 @@ const Car = ({car,onAdd,onUndo,rented}) => {
             {rented===0 ? <>
             <a className="btn" onClick={()=> onAdd(car.id)}>Rent</a>
             <a className="btn" onClick={()=> onUndo(car.id)}>Undo</a>
-           </> : <> <input type="date" id={vratiDateId(car)} name="rent-start"
+           </> : <> <input type="date" name="rent-start"
                     min={date}></input><h3>Amount:{car.amount} <br/> Price:{car.amount*car.priceperday}</h3></>}
             
           </div>
