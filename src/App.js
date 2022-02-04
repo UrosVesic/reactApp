@@ -104,14 +104,6 @@ function App() {
         refreshRents();
         const b = rentPrice + car.priceperday;
         setRentPrice(b);
-        console.log(
-          "car=",
-          car.brand,
-          "amount=",
-          car.amount,
-          "total price= ",
-          car.amount * car.priceperday
-        );
       }
     });
   };
@@ -128,14 +120,6 @@ function App() {
         } else {
           alert("You have not rented this car");
         }
-        console.log(
-          "car=",
-          car.brand,
-          "amount=",
-          car.amount,
-          "total price= ",
-          car.amount * car.priceperday
-        );
       }
     });
   };
@@ -144,6 +128,9 @@ function App() {
     setRents([]);
     setRentNum(0);
     setRentPrice(0);
+    cars.forEach((car) => {
+      car.amount = 0;
+    });
   }
 
   return (
@@ -154,7 +141,10 @@ function App() {
           path="/"
           element={<Cars cars={cars} onAdd={addToRents} onUndo={undoRent} />}
         />
-        <Route path="/checkout" element={<Checkout rents={rents} />} />
+        <Route
+          path="/checkout"
+          element={<Checkout rents={rents} removeAllRents={removeAllRents} />}
+        />
         <Route
           path="/rent"
           element={<Rents rents={rents} removeAllRents={removeAllRents} />}

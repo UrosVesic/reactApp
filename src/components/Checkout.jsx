@@ -18,7 +18,7 @@ function validation(){
     return true;
 }
 
-const Checkout = ({rents}) => {
+const Checkout = ({rents, removeAllRents}) => {
     function checkout(){
         document.getElementById("checkout").innerHTML=`
             <h3>${name}</h3>
@@ -26,6 +26,7 @@ const Checkout = ({rents}) => {
             <h3>${email}</h3>
             <h3>${phNumber}</h3>
             `;   
+            removeAllRents();
         }
         
         function totalPrice(){
